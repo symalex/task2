@@ -1,9 +1,11 @@
 package com.symbysoft.task2;
 
-import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-public class MainActivity extends Activity
+import com.bumptech.glide.Glide;
+
+public class MainActivity extends FragmentActivity
 {
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
