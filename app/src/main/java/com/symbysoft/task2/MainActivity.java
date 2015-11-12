@@ -33,10 +33,7 @@ public class MainActivity extends FragmentActivity
 			Log.d(TAG, this + ": Existing fragment found.");
 			list = (MainFragment)fr;
 		}
-		if( list != null )
-		    list.setDebugText("W: " + String.valueOf(MyApp.IsWideScreen()) +
-				    " T:" + String.valueOf(MyApp.IsTabletScreen()) +
-		            " Q:" + getResources().getString(R.string.qualificator_str));
+		Log.d(TAG, "W: " + String.valueOf(MyApp.IsWideScreen()) + " T:" + String.valueOf(MyApp.IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
 
 		if( MyApp.IsWideScreen() && findViewById(R.id.fr_details_container)!=null )
 		{
