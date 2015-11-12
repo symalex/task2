@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<item name="layout_main" type="layout">@layout/layout_main_land</item>
-	<item name="layout_details" type="layout">@layout/layout_details_land</item>
-	<item name="fr_layout_main" type="layout">@layout/fr_layout_main_land</item>
-	<item name="fr_layout_details" type="layout">@layout/fr_layout_details_land</item>
-</resources>
