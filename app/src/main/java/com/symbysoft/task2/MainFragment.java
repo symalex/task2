@@ -23,8 +23,8 @@ public class MainFragment extends Fragment
 	{
 		super.onViewCreated(view, savedInstanceState);
 		final ImageView image = (ImageView)view.findViewById(R.id.main_img_view);
-		Glide.with(this)
+		/*Glide.with(this)
 				.load("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg")
-				.into(image);
+				.into(image);*/
 	}
 }
