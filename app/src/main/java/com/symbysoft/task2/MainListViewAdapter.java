@@ -52,7 +52,7 @@ public class MainListViewAdapter extends BaseAdapter
 	{
 		Holder h;
 		if( convertView == null ){
-			convertView = inflater.inflate(R.layout.main_list_item, null, false);
+			convertView = inflater.inflate(R.layout.main_list_item, parent, false);
 			h = new Holder(convertView);
 			convertView.setTag(h);
 		} else  h = (Holder)convertView.getTag(position);
