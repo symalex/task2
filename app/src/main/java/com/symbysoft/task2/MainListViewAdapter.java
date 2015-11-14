@@ -81,20 +81,10 @@ public class MainListViewAdapter extends BaseAdapter
 			image = h.image;
 			convertView.setTag(h);
 		} else {
-			h = (Holder)convertView.getTag(position);
-			if( h != null )
-			{
-				h.title.setText(item.getTitle());
-				h.summary.setText(item.getDescriptionShort());
-				image = h.image;
-			}
-			else
-			{
-				// reused view
-				((TextView)convertView.findViewById(R.id.main_list_item_title)).setText(item.getTitle());
-				((TextView)convertView.findViewById(R.id.main_list_item_summary)).setText(item.getDescriptionShort());
-				image = (ImageView)convertView.findViewById(R.id.main_list_item_image);
-			}
+			h = (Holder)convertView.getTag();
+			h.title.setText(item.getTitle());
+			h.summary.setText(item.getDescriptionShort());
+			image = h.image;
 		}
 		if ( image != null )
 		{
