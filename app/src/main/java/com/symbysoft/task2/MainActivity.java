@@ -60,7 +60,7 @@ public class MainActivity extends MyBaseActivity implements AdapterView.OnItemCl
 	{
 		super.onStart();
 
-		list.setOnItemClickListener(this);
+		//list.setOnItemClickListener(this);
 	}
 
 	@Override

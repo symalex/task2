@@ -71,6 +71,13 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
+		Activity activity = getActivity();
+
+		if(activity instanceof AdapterView.OnItemClickListener){
+
+		}
+
+
 		if( mOnItemClickListener != null ) mOnItemClickListener.onItemClick(parent, view, position, id);
 	}
 }
