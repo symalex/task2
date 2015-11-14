@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 
 import com.bumptech.glide.Glide;
 
-public class MainActivity extends FragmentActivity implements AdapterView.OnItemClickListener
+public class MainActivity extends MyBaseActivity implements AdapterView.OnItemClickListener
 {
 	private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -22,7 +22,7 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_main);
-		MyApp.UpdateScreenInfo();
+		UpdateScreenInfo();
 
 		// create list fragment
 		Fragment fr = getFragmentManager().findFragmentByTag(MainFragment.FTAG);
@@ -36,12 +36,11 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
 			Log.d(TAG, this + ": Existing fragment found.");
 			list = (MainFragment)fr;
 		}
-		Log.d(TAG, "W: " + String.valueOf(MyApp.IsWideScreen()) + " T:" + String.valueOf(MyApp.IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
+		Log.d(TAG, "W: " + String.valueOf(IsWideScreen()) + " T:" + String.valueOf(IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
 
-		MyApp.setTwoFragment(MyApp.IsWideScreen() && findViewById(R.id.fr_details_container)!=null);
-		if( MyApp.IsTwoFragment() )
+		setTwoFragment(IsWideScreen() && findViewById(R.id.fr_details_container)!=null);
+		if( IsTwoFragment() )
 		{
-			MyApp.setTwoFragment(true);
 			fr = getFragmentManager().findFragmentByTag(DetailsFragment.FTAG);
 			if( fr == null )
 			{
@@ -69,7 +68,7 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
 	{
 		MyApp.getData().List().setSelectedIndex(position);
 		Log.d(TAG, this + ": onItemSelected = " + String.valueOf(position));
-		if( ! MyApp.IsTwoFragment() )
+		if( ! IsTwoFragment() )
 		{
 			Intent intent = new Intent(this, DetailsActivity.class);
 			startActivity(intent);

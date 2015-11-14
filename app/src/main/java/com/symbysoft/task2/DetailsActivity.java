@@ -10,7 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-public class DetailsActivity extends Activity implements View.OnTouchListener
+public class DetailsActivity extends MyBaseActivity implements View.OnTouchListener
 {
 	private static final String TAG = DetailsActivity.class.getSimpleName();
 
@@ -21,7 +21,7 @@ public class DetailsActivity extends Activity implements View.OnTouchListener
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_details);
-		MyApp.UpdateScreenInfo();
+		UpdateScreenInfo();
 
 		// create list fragment
 		Fragment fr = getFragmentManager().findFragmentByTag(MainFragment.FTAG);
@@ -35,7 +35,7 @@ public class DetailsActivity extends Activity implements View.OnTouchListener
 			Log.d(TAG, this + ": Existing fragment found.");
 			details = (DetailsFragment)fr;
 		}
-		Log.d(TAG, "W: " + String.valueOf(MyApp.IsWideScreen()) + " T:" + String.valueOf(MyApp.IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
+		Log.d(TAG, "W: " + String.valueOf(IsWideScreen()) + " T:" + String.valueOf(IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
 
 	}
 
