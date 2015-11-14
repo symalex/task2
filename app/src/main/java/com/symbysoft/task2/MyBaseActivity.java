@@ -8,6 +8,7 @@ public class MyBaseActivity extends FragmentActivity
 {
     private static Boolean mIsWideScreen;
     private static Boolean mIsTabletScreen;
+    private static Boolean mPrevTwoFragment;
     private static Boolean mTwoFragment;
     public static Boolean IsWideScreen(){return mIsWideScreen; }
     public static Boolean IsTabletScreen(){return mIsTabletScreen; }
@@ -27,6 +28,7 @@ public class MyBaseActivity extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UpdateScreenInfo();
+        mPrevTwoFragment = mTwoFragment;
     }
 }
 

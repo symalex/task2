@@ -22,7 +22,6 @@ public class MainActivity extends MyBaseActivity implements AdapterView.OnItemCl
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_main);
-		UpdateScreenInfo();
 
 		// create list fragment
 		Fragment fr = getFragmentManager().findFragmentByTag(MainFragment.FTAG);
@@ -56,18 +55,11 @@ public class MainActivity extends MyBaseActivity implements AdapterView.OnItemCl
 	}
 
 	@Override
-	protected void onStart()
-	{
-		super.onStart();
-
-		//list.setOnItemClickListener(this);
-	}
-
-	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		MyApp.getData().List().setSelectedIndex(position);
+		ResourceDataProvider.List().setSelectedIndex(position);
 		Log.d(TAG, this + ": onItemSelected = " + String.valueOf(position));
+
 		if( ! IsTwoFragment() )
 		{
 			Intent intent = new Intent(this, DetailsActivity.class);

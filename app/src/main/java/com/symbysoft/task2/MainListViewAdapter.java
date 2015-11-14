@@ -86,14 +86,12 @@ public class MainListViewAdapter extends BaseAdapter
 			h.summary.setText(item.getDescriptionShort());
 			image = h.image;
 		}
-		if ( image != null )
-		{
-		    Glide.with(ctx)
+
+		Glide.with(ctx)
 				.load("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg")
 				//.load(R.drawable.test)
 				//.load(Uri.parse("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg"))
 				.into(image);
-		}
 
 		return convertView;
 	}

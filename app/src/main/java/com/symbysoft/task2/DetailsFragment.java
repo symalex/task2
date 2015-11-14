@@ -43,7 +43,7 @@ public class DetailsFragment extends Fragment
 
 	public void Update()
 	{
-		PlanetDetails details = MyApp.getData().List().getSelectedItem();
+		PlanetDetails details = ResourceDataProvider.List().getSelectedItem();
 		mTitle.setText(details.getTitle());
 		mSummary.setText(details.getDescriptionLong());
 
@@ -63,9 +63,8 @@ public class DetailsFragment extends Fragment
 		mTitle = (TextView)view.findViewById(R.id.main_list_item_big_title);
 		mSummary = (TextView)view.findViewById(R.id.main_list_item_big_summary);
 
-
 		// dynamicaly create elements
-		PlanetDetails details = MyApp.getData().List().getSelectedItem();
+		PlanetDetails details = ResourceDataProvider.List().getSelectedItem();
 		for(int i=0; i<details.getInfo().size(); i++)
 		{
 			ImageAndText item = details.getInfo().get(i);

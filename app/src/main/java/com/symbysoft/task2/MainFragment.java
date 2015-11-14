@@ -25,7 +25,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 
 	public static final String FTAG = "fragment_list";
     protected ListView mListView;
-	private AdapterView.OnItemClickListener mOnItemClickListener;
 
 	public static Fragment newInstance(Activity activity, int id)
 	{
@@ -40,10 +39,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 	}
 
 	public ListView getListView(){return mListView; }
-    public void setOnItemClickListener(AdapterView.OnItemClickListener listener)
-    {
-	    mOnItemClickListener = listener;
-    }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -58,26 +53,15 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 	public void onViewCreated(View view, Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		MainListViewAdapter listViewAdapter = new MainListViewAdapter(getActivity(), MyApp.getData().List());
+		MainListViewAdapter listViewAdapter = new MainListViewAdapter(getActivity(), ResourceDataProvider.List());
 		mListView.setAdapter(listViewAdapter);
-
-		/*Glide.with(this)
-				.load("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg")
-				//.load(R.drawable.test)
-				//.load(Uri.parse("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg"))
-				.into(view);*/
 	}
 
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
 		Activity activity = getActivity();
-
-		if(activity instanceof AdapterView.OnItemClickListener){
-
-		}
-
-
-		if( mOnItemClickListener != null ) mOnItemClickListener.onItemClick(parent, view, position, id);
+		if(activity instanceof AdapterView.OnItemClickListener)
+			((AdapterView.OnItemClickListener)activity).onItemClick(parent, view, position, id);
 	}
 }
