@@ -67,7 +67,7 @@ public class MainActivity extends FragmentActivity implements AdapterView.OnItem
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		MyApp.List().setSelectedIndex(position);
+		MyApp.getData().List().setSelectedIndex(position);
 		Log.d(TAG, this + ": onItemSelected = " + String.valueOf(position));
 		if( ! MyApp.IsTwoFragment() )
 		{
