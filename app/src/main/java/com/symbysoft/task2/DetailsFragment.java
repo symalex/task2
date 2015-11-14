@@ -43,7 +43,7 @@ public class DetailsFragment extends Fragment
 
 	public void Update()
 	{
-		PlanetDetails details = MyApp.List().getSelectedItem();
+		PlanetDetails details = MyApp.getData().List().getSelectedItem();
 		mTitle.setText(details.getTitle());
 		mSummary.setText(details.getDescriptionLong());
 
@@ -65,7 +65,7 @@ public class DetailsFragment extends Fragment
 
 
 		// dynamicaly create elements
-		PlanetDetails details = MyApp.List().getSelectedItem();
+		PlanetDetails details = MyApp.getData().List().getSelectedItem();
 		for(int i=0; i<details.getInfo().size(); i++)
 		{
 			ImageAndText item = details.getInfo().get(i);

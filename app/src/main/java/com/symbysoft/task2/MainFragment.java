@@ -58,7 +58,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 	public void onViewCreated(View view, Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		MainListViewAdapter listViewAdapter = new MainListViewAdapter(getActivity(), MyApp.List());
+		MainListViewAdapter listViewAdapter = new MainListViewAdapter(getActivity(), MyApp.getData().List());
 		mListView.setAdapter(listViewAdapter);
 
 		/*Glide.with(this)
