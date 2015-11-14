@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="main_list_backgroud_color">#000040</color>
+    <color name="details_list_backgroud_color">#000050</color>
+    <color name="deafult_text_color">@android:color/holo_blue_bright</color>
+
 </resources>

@@ -88,7 +88,7 @@ public class MainListViewAdapter extends BaseAdapter
 		}
 
 		Glide.with(ctx)
-				.load("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg")
+				.load(item.getImgSmallUrl())
 				//.load(R.drawable.test)
 				//.load(Uri.parse("http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg"))
 				.into(image);

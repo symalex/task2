@@ -36,12 +36,12 @@ public class DetailsActivity extends MyBaseActivity
 			if (fr == null)
 			{
 				Log.d(TAG, this + ": Existing fragment not found. ");
-				details = (DetailsFragment) DetailsFragment.newInstance(this, R.id.fr_details_container);
+				details = (DetailsFragment)DetailsFragment.newInstance(this, R.id.fr_details_container);
 			}
 			else
 			{
 				Log.d(TAG, this + ": Existing fragment found.");
-				details = (DetailsFragment) fr;
+				details = (DetailsFragment)fr;
 			}
 		}
 	}

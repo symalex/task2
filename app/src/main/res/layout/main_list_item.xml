@@ -19,6 +19,7 @@
 		android:layout_toRightOf="@+id/main_list_item_image"
 		android:layout_marginTop="@dimen/main_list_item_title_margin_top"
 		android:layout_marginLeft="@dimen/main_list_item_title_margin_left"
+		android:textColor="@android:color/holo_blue_bright"
 		/>
 
 	<TextView
@@ -28,6 +29,7 @@
 		android:layout_toRightOf="@+id/main_list_item_image"
 		android:layout_marginTop="@dimen/main_list_item_details_margin_top"
 		android:layout_marginLeft="@dimen/main_list_item_details_margin_left"
+		android:textColor="@android:color/holo_blue_bright"
 		/>
 
 </RelativeLayout>

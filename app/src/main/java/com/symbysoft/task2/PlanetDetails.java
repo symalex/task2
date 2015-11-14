@@ -7,11 +7,18 @@ public class PlanetDetails implements Parcelable
 {
 	private static final long serialVersionUID = 300000000000000001L;
 
+	private final int max_shot_length = 12;
+
 	private String mTitle;
 	private String mImgSmallUrl;
 	private String mDescriptionShort;
 	private String mDescriptionLong;
 	private ImageAndTextList mInfo;
+
+	protected String shortStr(String value, int max)
+	{
+		return value.substring(0, value.length() > max ? max : value.length());
+	}
 
 	public PlanetDetails(String img_small_url, String title, String description) {
 		super();
@@ -42,7 +49,7 @@ public class PlanetDetails implements Parcelable
 	}
 
 	public String getDescriptionShort() {
-		return mDescriptionShort;
+		return shortStr(mDescriptionShort, max_shot_length);
 	}
 	public void setDescriptionShort(String value) {
 		this.mDescriptionShort = value;
