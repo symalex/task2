@@ -1,13 +1,16 @@
 package com.symbysoft.task2;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.bumptech.glide.Glide;
 
-public class MainActivity extends FragmentActivity
+public class MainActivity extends FragmentActivity implements AdapterView.OnItemClickListener
 {
 	private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -26,7 +29,7 @@ public class MainActivity extends FragmentActivity
 		if( fr == null )
 		{
 			Log.d(TAG, this + ": Existing fragment not found. ");
-			list = (MainFragment)MainFragment.CreateInstance(this,R.id.fr_list_container);
+			list = (MainFragment)MainFragment.newInstance(this, R.id.fr_list_container);
 		}
 		else
 		{
@@ -35,19 +38,45 @@ public class MainActivity extends FragmentActivity
 		}
 		Log.d(TAG, "W: " + String.valueOf(MyApp.IsWideScreen()) + " T:" + String.valueOf(MyApp.IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
 
-		if( MyApp.IsWideScreen() && findViewById(R.id.fr_details_container)!=null )
+		MyApp.setTwoFragment(MyApp.IsWideScreen() && findViewById(R.id.fr_details_container)!=null);
+		if( MyApp.IsTwoFragment() )
 		{
+			MyApp.setTwoFragment(true);
 			fr = getFragmentManager().findFragmentByTag(DetailsFragment.FTAG);
 			if( fr == null )
 			{
 				Log.d(TAG, this + ": Existing fragment not found. ");
-				details = (DetailsFragment)DetailsFragment.CreateInstance(this,R.id.fr_details_container);
+				details = (DetailsFragment)DetailsFragment.newInstance(this,R.id.fr_details_container);
 			}
 			else
 			{
 				Log.d(TAG, this + ": Existing fragment found.");
 				details = (DetailsFragment)fr;
 			}
+		}
+	}
+
+	@Override
+	protected void onStart()
+	{
+		super.onStart();
+
+		list.setOnItemClickListener(this);
+	}
+
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+	{
+		MyApp.List().setSelectedIndex(position);
+		Log.d(TAG, this + ": onItemSelected = " + String.valueOf(position));
+		if( ! MyApp.IsTwoFragment() )
+		{
+			Intent intent = new Intent(this, DetailsActivity.class);
+			startActivity(intent);
+		}
+		else
+		{
+			if( details != null ) details.Update();
 		}
 	}
 }

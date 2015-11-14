@@ -8,13 +8,13 @@
 
 	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/fr_list_container"
-		android:layout_weight="1"
+		android:layout_weight="@integer/list_item_width_weight"
 		android:layout_width="0dp"
 		android:layout_height="match_parent" />
 
 	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:id="@+id/fr_details_container"
-		android:layout_weight="9"
+		android:layout_weight="@integer/details_item_width_weight"
 		android:layout_width="0dp"
 		android:layout_height="match_parent" />
 

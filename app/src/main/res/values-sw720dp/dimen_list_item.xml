@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<integer name="list_item_width_weight">6</integer>
+	<integer name="details_item_width_weight">9</integer>
+	<dimen name="list_item_height">100dp</dimen>
+	<dimen name="list_item_image_width">110dp</dimen>
+	<dimen name="list_item_image_height">110dp</dimen>
+	<dimen name="list_item_image_margin">12dp</dimen>
+	<dimen name="main_list_item_title_margin_top">10dp</dimen>
+	<dimen name="main_list_item_title_margin_left">2dp</dimen>
+	<dimen name="main_list_item_details_margin_top">30dp</dimen>
+	<dimen name="main_list_item_details_margin_left">2dp</dimen>
+</resources>

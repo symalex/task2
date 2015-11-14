@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<integer-array name="data_items">
+		<item>@array/array0</item>
+		<item>@array/array1</item>
+	</integer-array>
+
+	<!-- ######################################## main item array 0 #################################################### -->
+	<array name="array0">
+		<item>@array/array0_data</item>
+		<item>@array/array0_info</item>
+	</array>
+	<!-- end of root element -->
+	<string-array name="array0_data">
+		<item name="img_small">http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg</item>
+		<item name="title">item zero</item>
+		<item name="description">item zero description</item>
+	</string-array>
+	<!-- ################ array info 0  ################ -->
+	<array name="array0_info">
+		<item>@array/array0_0_info_item</item>
+		<item>@array/array0_1_info_item</item>
+	</array>
+	<!-- array info 0 items -->
+	<string-array name="array0_0_info_item">
+		<item name="img">http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg</item>
+		<item name="text">text info 0</item>
+	</string-array>
+	<string-array name="array0_1_info_item">
+		<item name="img">http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg</item>
+		<item name="text">text info 0</item>
+	</string-array>
+
+	<!-- ######################################## main item array 1 #################################################### -->
+	<array name="array1">
+		<item>@array/array1_data</item>
+		<item>@array/array1_info</item>
+	</array>
+	<!-- end of root element -->
+	<string-array name="array1_data">
+		<item name="img_small">http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg</item>
+		<item name="title">item one</item>
+		<item name="description">item one description</item>
+	</string-array>
+	<!-- ################ array info 0  ################ -->
+	<array name="array1_info">
+		<item>@array/array1_0_info_item</item>
+		<item>@array/array1_1_info_item</item>
+	</array>
+	<!-- array info 0 items -->
+	<string-array name="array1_0_info_item">
+		<item name="img">http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg</item>
+		<item name="text">text info 1</item>
+	</string-array>
+	<string-array name="array1_1_info_item">
+		<item name="img">http://inthecheesefactory.com/uploads/source/glidepicasso/cover.jpg</item>
+		<item name="text">text info 1</item>
+	</string-array>
+
+	<!-- ######################################## main item array 2 #################################################### -->
+
+</resources>

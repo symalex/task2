@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="@dimen/list_item_height"
-	android:id="@+id/main_list_item_id"
+	android:id="@+id/main_list_big_item_id"
 	>
 
 	<ImageView
-		android:id="@+id/main_list_item_image"
-		android:layout_width="@dimen/list_item_image_width"
-		android:layout_height="@dimen/list_item_image_height"
+		android:id="@+id/main_list_item_big_image"
+		android:layout_width="@dimen/list_item_image_big_width"
+		android:layout_height="@dimen/list_item_image_big_height"
 		android:layout_margin="@dimen/list_item_image_margin"
 		android:src="@drawable/planet_background"
 		android:layout_alignParentLeft="true"
 		/>
 
 	<TextView
-		android:id="@+id/main_list_item_title"
+		android:id="@+id/main_list_item_big_title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/main_list_item_image"
+		android:layout_toRightOf="@+id/main_list_item_big_image"
 		android:layout_marginTop="@dimen/main_list_item_title_margin_top"
 		android:layout_marginLeft="@dimen/main_list_item_title_margin_left"
 		/>
 
 	<TextView
-		android:id="@+id/main_list_item_summary"
+		android:id="@+id/main_list_item_big_summary"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/main_list_item_image"
+		android:layout_toRightOf="@+id/main_list_item_big_image"
 		android:layout_marginTop="@dimen/main_list_item_details_margin_top"
 		android:layout_marginLeft="@dimen/main_list_item_details_margin_left"
 		/>
