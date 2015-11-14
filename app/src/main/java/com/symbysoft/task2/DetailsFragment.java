@@ -66,10 +66,9 @@ public class DetailsFragment extends Fragment
 
 		// dynamicaly create elements
 		PlanetDetails details = MyApp.List().getSelectedItem();
-		ImageAndTextList list = details.getInfo();
-		for(int i=0; i<list.size(); i++)
+		for(int i=0; i<details.getInfo().size(); i++)
 		{
-			ImageAndText item = list.get(i);
+			ImageAndText item = details.getInfo().get(i);
 			//item.getText();
 			//item.getImgUrl();
 			Log.d(TAG, this + ": item (img,text) ( " + item.getImgUrl() + ", " + item.getText() + ") ");
@@ -77,14 +76,13 @@ public class DetailsFragment extends Fragment
 			LinearLayout layout = new LinearLayout(getActivity());
 
 			TextView text = new TextView(getActivity());
-			text.setText("dsafsdfskl safsajkf; jsj sajkfs;afsads");
+			text.setText("Test text");
 			text.setGravity(Gravity.BOTTOM);
 			LinearLayout.LayoutParams rg_params = new LinearLayout.LayoutParams(
 					LinearLayout.LayoutParams.MATCH_PARENT,
 					LinearLayout.LayoutParams.MATCH_PARENT
 			);
 			layout.setLayoutParams(rg_params);
-
 
 			layout.addView(text);
 
