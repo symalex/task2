@@ -12,10 +12,10 @@ import com.bumptech.glide.Glide;
 
 public class MainActivity extends MyBaseActivity implements AdapterView.OnItemClickListener
 {
-	private static final String TAG = MainActivity.class.getSimpleName();
+	private final String TAG = MainActivity.class.getSimpleName();
 
-	protected MainFragment list;
-	protected DetailsFragment details;
+	protected MainFragment mList;
+	protected DetailsFragment mDetails;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -28,28 +28,28 @@ public class MainActivity extends MyBaseActivity implements AdapterView.OnItemCl
 		if( fr == null )
 		{
 			Log.d(TAG, this + ": Existing fragment not found. ");
-			list = (MainFragment)MainFragment.newInstance(this, R.id.fr_list_container);
+			mList = (MainFragment)MainFragment.newInstance(this, R.id.fr_list_container);
 		}
 		else
 		{
 			Log.d(TAG, this + ": Existing fragment found.");
-			list = (MainFragment)fr;
+			mList = (MainFragment)fr;
 		}
-		Log.d(TAG, "W: " + String.valueOf(IsWideScreen()) + " T:" + String.valueOf(IsTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
+		Log.d(TAG, "W: " + String.valueOf(isWideScreen()) + " T:" + String.valueOf(isTabletScreen()) + " Q:" + getResources().getString(R.string.qualificator_str));
 
-		setTwoFragment(IsWideScreen() && findViewById(R.id.fr_details_container)!=null);
-		if( IsTwoFragment() )
+		setTwoFragment(isWideScreen() && findViewById(R.id.fr_details_container)!=null);
+		if( isTwoFragment() )
 		{
 			fr = getFragmentManager().findFragmentByTag(DetailsFragment.FTAG);
 			if( fr == null )
 			{
 				Log.d(TAG, this + ": Existing fragment not found. ");
-				details = (DetailsFragment)DetailsFragment.newInstance(this,R.id.fr_details_container);
+				mDetails = (DetailsFragment)DetailsFragment.newInstance(this,R.id.fr_details_container);
 			}
 			else
 			{
 				Log.d(TAG, this + ": Existing fragment found.");
-				details = (DetailsFragment)fr;
+				mDetails = (DetailsFragment)fr;
 			}
 		}
 	}
@@ -57,17 +57,17 @@ public class MainActivity extends MyBaseActivity implements AdapterView.OnItemCl
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
-		ResourceDataProvider.List().setSelectedIndex(position);
+		ResourceDataProvider.list().setSelectedIndex(position);
 		Log.d(TAG, this + ": onItemSelected = " + String.valueOf(position));
 
-		if( ! IsTwoFragment() )
+		if( ! isTwoFragment() )
 		{
 			Intent intent = new Intent(this, DetailsActivity.class);
 			startActivity(intent);
 		}
 		else
 		{
-			if( details != null ) details.Update();
+			if( mDetails != null ) mDetails.updateDetailsView();
 		}
 	}
 }

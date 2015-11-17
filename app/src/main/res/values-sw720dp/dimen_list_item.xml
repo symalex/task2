@@ -6,8 +6,18 @@
 	<dimen name="list_item_image_width">110dp</dimen>
 	<dimen name="list_item_image_height">110dp</dimen>
 	<dimen name="list_item_image_margin">12dp</dimen>
-	<dimen name="main_list_item_title_margin_top">10dp</dimen>
-	<dimen name="main_list_item_title_margin_left">2dp</dimen>
+	<dimen name="list_item_title_text_size">20dp</dimen>
+	<dimen name="list_item_details_text_size">14dp</dimen>
+
+	<dimen name="main_list_item_title_margin_top">2dp</dimen>
+	<dimen name="main_list_item_title_margin_left">0dp</dimen>
 	<dimen name="main_list_item_details_margin_top">30dp</dimen>
-	<dimen name="main_list_item_details_margin_left">2dp</dimen>
+	<dimen name="main_list_item_details_margin_left">0dp</dimen>
+	<integer name="main_list_item_details_max_chars">220</integer>
+
+	<dimen name="main_list_item_big_title_margin_top">8dp</dimen>
+	<dimen name="main_list_item_big_title_margin_left">0dp</dimen>
+	<dimen name="main_list_item_big_details_margin_top">32dp</dimen>
+	<dimen name="main_list_item_big_details_margin_left">0dp</dimen>
+
 </resources>

@@ -10,7 +10,7 @@ import android.util.Log;
 
 public class MyApp extends Application
 {
-	private static final String TAG = MyApp.class.getSimpleName();
+	private final String TAG = MyApp.class.getSimpleName();
 	private static MyApp mApp;
     private static ResourceDataProvider mData;
 	public static MyApp myApp(){return mApp; }

@@ -5,250 +5,139 @@
                       https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D0%BB%D0%BD%D0%B5%D1%87%D0%BD%D0%B0%D1%8F_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0#.D0.9C.D0.B5.D1.80.D0.BA.D1.83.D1.80.D0.B8.D0.B9
 	-->
 
-	<integer-array name="data_items">
-		<item>@array/array0</item>
-		<item>@array/array1</item>
-		<item>@array/array2</item>
-		<item>@array/array3</item>
-		<item>@array/array4</item>
-		<item>@array/array5</item>
-		<item>@array/array6</item>
-		<item>@array/array7</item>
-		<item>@array/array8</item>
-	</integer-array>
+	<!-- ######################################## panet item 0 #################################################### -->
+	<array name="panet_item_0">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2015/08/PIA17669.jpeg</item>
+		/*1*/<item name="title">Солнце</item>
+		/*2*/<item name="description">Солнце - звезда Солнечной системы</item>
+	</array>
+	<array name="panet_item_0_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2015/08/Ultraviolet_Sun.jpg</item>
+		/*1*/<item name="text">Экстремальный солнечный ультрафиолет</item>
+	</array>
+	<array name="panet_item_0_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2015/08/coronaloop_trace_big.jpg</item>
+		/*1*/<item name="text">Корональные петли</item>
+	</array>
 
-	<!-- ######################################## main item array 0 #################################################### -->
-	<array name="array0">
-		<item>@array/array0_data</item>
-		<item>@array/array0_info</item>
+	<!-- ######################################## panet item 1 #################################################### -->
+	<array name="panet_item_1">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/11/Mercury_732x520.jpg</item>
+		/*1*/<item name="title">Меркурий</item>
+		/*2*/<item name="description">Меркурий является ближайшей планетой к Солнцу и наименьшей планетой системы</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array0_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2015/08/PIA17669.jpeg</item>
-		<item name="title">Солнце</item>
-		<item name="description">Солнце - звезда Солнечной системы</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array0_info">
-		<item>@array/array0_0_info_item</item>
-		<item>@array/array0_1_info_item</item>
+	<array name="panet_item_1_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/messenger_falsecolor.jpg</item>
+		/*1*/<item name="text">Бассейн Caloris на Меркурии</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array0_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2015/08/Ultraviolet_Sun.jpg</item>
-		<item name="text">Экстремальный солнечный ультрафиолет</item>
-	</string-array>
-	<string-array name="array0_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2015/08/coronaloop_trace_big.jpg</item>
-		<item name="text">Корональные петли</item>
-	</string-array>
+	<array name="panet_item_1_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/rembrandt1.jpg</item>
+		/*1*/<item name="text">Ударный кратер Рембрант</item>
+	</array>
 
-	<!-- ######################################## main item array 1 #################################################### -->
-	<array name="array1">
-		<item>@array/array1_data</item>
-		<item>@array/array1_info</item>
+	<!-- ######################################## panet item 2 #################################################### -->
+	<array name="panet_item_2">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/11/Venus_globe.jpg</item>
+		/*1*/<item name="title">Венера</item>
+		/*2*/<item name="description">Венера близка по размеру к Земле и, как и Земля, имеет толстую силикатную оболочку вокруг железного ядра и атмосферу</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array1_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/11/Mercury_732x520.jpg</item>
-		<item name="title">Меркурий</item>
-		<item name="description">Меркурий является ближайшей планетой к Солнцу и наименьшей планетой системы</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array1_info">
-		<item>@array/array1_0_info_item</item>
-		<item>@array/array1_1_info_item</item>
+	<array name="panet_item_2_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/8915499.jpg</item>
+		/*1*/<item name="text">Венера Маринера-10</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array1_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/messenger_falsecolor.jpg</item>
-		<item name="text">Бассейн Caloris на Меркурии</item>
-	</string-array>
-	<string-array name="array1_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/rembrandt1.jpg</item>
-		<item name="text">Ударный кратер Рембрант</item>
-	</string-array>
+	<array name="panet_item_2_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/PIA00106.jpg</item>
+		/*1*/<item name="text">3D изображение горы Маат Монс на Венере</item>
+	</array>
 
-	<!-- ######################################## main item array 2 #################################################### -->
-	<array name="array2">
-		<item>@array/array2_data</item>
-		<item>@array/array2_info</item>
+	<!-- ######################################## panet item 3 #################################################### -->
+	<array name="panet_item_3">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/11/VIIRS_4Jan2012_br.jpg</item>
+		/*1*/<item name="title">Земля</item>
+		/*2*/<item name="description">Земля является крупнейшей и самой плотной из внутренних планет</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array2_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/11/Venus_globe.jpg</item>
-		<item name="title">Венера</item>
-		<item name="description">Венера близка по размеру к Земле и, как и Земля, имеет толстую силикатную оболочку вокруг железного ядра и атмосферу</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array2_info">
-		<item>@array/array2_0_info_item</item>
-		<item>@array/array2_1_info_item</item>
+	<array name="panet_item_3_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/08/571133main_iss028e017197_hires_full1.jpg</item>
+		/*1*/<item name="text">Северное сияние из космоса</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array2_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/8915499.jpg</item>
-		<item name="text">Венера Маринера-10</item>
-	</string-array>
-	<string-array name="array2_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/PIA00106.jpg</item>
-		<item name="text">3D изображение горы Маат Монс на Венере</item>
-	</string-array>
+	<array name="panet_item_3_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2015/08/isabel091503-1915zd2.jpg</item>
+		/*1*/<item name="text">Изабель продвигается вперед</item>
+	</array>
 
-	<!-- ######################################## main item array 3 #################################################### -->
-	<array name="array3">
-		<item>@array/array3_data</item>
-		<item>@array/array3_info</item>
+	<!-- ######################################## panet item 4 #################################################### -->
+	<array name="panet_item_4">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/11/Water_ice_clouds_hanging_above_Tharsis_PIA02653_black_background.jpg</item>
+		/*1*/<item name="title">Марс</item>
+		/*2*/<item name="description">Марс меньше Земли и Венеры. Он обладает атмосферой, состоящей главным образом из углекислого газа</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array3_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/11/VIIRS_4Jan2012_br.jpg</item>
-		<item name="title">Земля</item>
-		<item name="description">Земля является крупнейшей и самой плотной из внутренних планет</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array3_info">
-		<item>@array/array3_0_info_item</item>
-		<item>@array/array3_1_info_item</item>
+	<array name="panet_item_4_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/Mars__atmosphere.jpg</item>
+		/*1*/<item name="text">Атмосфера марса</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array3_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/08/571133main_iss028e017197_hires_full1.jpg</item>
-		<item name="text">Северное сияние из космоса</item>
-	</string-array>
-	<string-array name="array3_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2015/08/isabel091503-1915zd2.jpg</item>
-		<item name="text">Изабель продвигается вперед</item>
-	</string-array>
+	<array name="panet_item_4_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/08/PHOBOS_732X520.jpg</item>
+		/*1*/<item name="text">Спутник марса Фобос</item>
+	</array>
 
-	<!-- ######################################## main item array 4 #################################################### -->
-	<array name="array4">
-		<item>@array/array4_data</item>
-		<item>@array/array4_info</item>
+	<!-- ######################################## panet item 5 #################################################### -->
+	<array name="panet_item_5">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/10/Full_Disk_Jupiter1_br.jpg</item>
+		/*1*/<item name="title">Юпитер</item>
+		/*2*/<item name="description">Юпитер обладает массой в 318 раз больше земной, и в 2,5 раза массивнее всех остальных планет, вместе взятых. Он состоит главным образом из водорода и гелия</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array4_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/11/Water_ice_clouds_hanging_above_Tharsis_PIA02653_black_background.jpg</item>
-		<item name="title">Марс</item>
-		<item name="description">Марс меньше Земли и Венеры. Он обладает атмосферой, состоящей главным образом из углекислого газа</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array4_info">
-		<item>@array/array4_0_info_item</item>
-		<item>@array/array4_1_info_item</item>
+	<array name="panet_item_5_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/PIA00014.jpg</item>
+		/*1*/<item name="text">PIA00014</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array4_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/Mars__atmosphere.jpg</item>
-		<item name="text">Атмосфера марса</item>
-	</string-array>
-	<string-array name="array4_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/08/PHOBOS_732X520.jpg</item>
-		<item name="text">Спутник марса Фобос</item>
-	</string-array>
+	<array name="panet_item_5_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/GPN-2003-000003.jpg</item>
+		/*1*/<item name="text">GPN-2003-000003</item>
+	</array>
 
-	<!-- ######################################## main item array 5 #################################################### -->
-	<array name="array5">
-		<item>@array/array5_data</item>
-		<item>@array/array5_info</item>
+	<!-- ######################################## panet item 6 #################################################### -->
+	<array name="panet_item_6">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/10/227291.png</item>
+		/*1*/<item name="title">Сатурн</item>
+		/*2*/<item name="description">Сатурн, известный своей обширной системой колец, имеет несколько схожие с Юпитером структуру атмосферы и магнитосферы</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array5_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/10/Full_Disk_Jupiter1_br.jpg</item>
-		<item name="title">Юпитер</item>
-		<item name="description">Юпитер обладает массой в 318 раз больше земной, и в 2,5 раза массивнее всех остальных планет, вместе взятых. Он состоит главным образом из водорода и гелия</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array5_info">
-		<item>@array/array5_0_info_item</item>
-		<item>@array/array5_1_info_item</item>
+	<array name="panet_item_6_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/08/Cassini_Saturn_Orbit_Insertion.jpg</item>
+		/*1*/<item name="text">Первым космическим аппаратом был Пионер-11, который пролетел мимо в 1979 году</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array5_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/PIA00014.jpg</item>
-		<item name="text">PIA00014</item>
-	</string-array>
-	<string-array name="array5_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/GPN-2003-000003.jpg</item>
-		<item name="text">GPN-2003-000003</item>
-	</string-array>
+	<array name="panet_item_6_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/08/saturn_from_cassini_orbiter_2004-10-06.jpg</item>
+		/*1*/<item name="text">Кольца Сатурна оставались загадкой для астрономов с тех самых пор, когда Галилео Галилей открыл их с помощью своего телескопа в 1610 году</item>
+	</array>
 
-	<!-- ######################################## main item array 6 #################################################### -->
-	<array name="array6">
-		<item>@array/array6_data</item>
-		<item>@array/array6_info</item>
+	<!-- ######################################## panet item 7 #################################################### -->
+	<array name="panet_item_7">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/12/4_179_br.jpg</item>
+		/*1*/<item name="title">Уран</item>
+		/*2*/<item name="description">Уран с массой в 14 раз больше, чем у Земли, является самой лёгкой из внешних планет. Уникальным среди других планет его делает то, что он вращается «лёжа на боку»</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array6_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/10/227291.png</item>
-		<item name="title">Сатурн</item>
-		<item name="description">Сатурн, известный своей обширной системой колец, имеет несколько схожие с Юпитером структуру атмосферы и магнитосферы</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array6_info">
-		<item>@array/array6_0_info_item</item>
-		<item>@array/array6_1_info_item</item>
+	<array name="panet_item_7_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/Uranus_Ring_Moons1.jpg</item>
+		/*1*/<item name="text">Кольца Урана</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array6_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/08/Cassini_Saturn_Orbit_Insertion.jpg</item>
-		<item name="text">Первым косм. аппаратом был Пионер-11, который пролетел мимо в 1979 году</item>
-	</string-array>
-	<string-array name="array6_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/08/saturn_from_cassini_orbiter_2004-10-06.jpg</item>
-		<item name="text">Кольца Сатурна оставались загадкой для астрономов с тех самых пор, когда Галилео Галилей открыл их с помощью своего телескопа в 1610 году</item>
-	</string-array>
+	<array name="panet_item_7_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/uranus_true732X520.jpg</item>
+		/*1*/<item name="text">Реальное фото Урана</item>
+	</array>
 
-	<!-- ######################################## main item array 7 #################################################### -->
-	<array name="array7">
-		<item>@array/array7_data</item>
-		<item>@array/array7_info</item>
+	<!-- ######################################## panet item 8 #################################################### -->
+	<array name="panet_item_8">
+		/*0*/<item name="small_img_url">http://v-kosmose.com/wp-content/uploads/2013/11/Neptune_Full_br.jpg</item>
+		/*1*/<item name="title">Нептун</item>
+		/*2*/<item name="description">Нептун, хотя и немного меньше Урана, более массивен (17 масс Земли) и поэтому более плотный. Он излучает больше внутреннего тепла, но не так много, как Юпитер или Сатурн</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array7_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/12/4_179_br.jpg</item>
-		<item name="title">Уран</item>
-		<item name="description">Уран с массой в 14 раз больше, чем у Земли, является самой лёгкой из внешних планет. Уникальным среди других планет его делает то, что он вращается «лёжа на боку»</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array7_info">
-		<item>@array/array7_0_info_item</item>
-		<item>@array/array7_1_info_item</item>
+	<array name="panet_item_8_details_0">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/Neptune_Rings.jpg</item>
+		/*1*/<item name="text">Кольца Нептуна</item>
 	</array>
-	<!-- array info 0 items -->
-	<string-array name="array7_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/Uranus_Ring_Moons1.jpg</item>
-		<item name="text">Кольца Урана</item>
-	</string-array>
-	<string-array name="array7_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/uranus_true732X520.jpg</item>
-		<item name="text">Реальное фото Урана</item>
-	</string-array>
-
-	<!-- ######################################## main item array 8 #################################################### -->
-	<array name="array8">
-		<item>@array/array8_data</item>
-		<item>@array/array8_info</item>
+	<array name="panet_item_8_details_1">
+		/*0*/<item name="img_url">http://v-kosmose.com/wp-content/uploads/2014/06/neptune1.jpg</item>
+		/*1*/<item name="text">Реальное фото Нептуна</item>
 	</array>
-	<!-- end of root element -->
-	<string-array name="array8_data">
-		<item name="img_small">http://v-kosmose.com/wp-content/uploads/2013/11/Neptune_Full_br.jpg</item>
-		<item name="title">Нептун</item>
-		<item name="description">Нептун, хотя и немного меньше Урана, более массивен (17 масс Земли) и поэтому более плотный. Он излучает больше внутреннего тепла, но не так много, как Юпитер или Сатурн</item>
-	</string-array>
-	<!-- ################ array info 0  ################ -->
-	<array name="array8_info">
-		<item>@array/array8_0_info_item</item>
-		<item>@array/array8_1_info_item</item>
-	</array>
-	<!-- array info 0 items -->
-	<string-array name="array8_0_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/Neptune_Rings.jpg</item>
-		<item name="text">Кольца Нептуна</item>
-	</string-array>
-	<string-array name="array8_1_info_item">
-		<item name="img">http://v-kosmose.com/wp-content/uploads/2014/06/neptune1.jpg</item>
-		<item name="text">Реальное фото Нептуна</item>
-	</string-array>
 
 </resources>

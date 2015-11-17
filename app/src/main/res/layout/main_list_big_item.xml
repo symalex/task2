@@ -9,9 +9,7 @@
 		android:layout_width="@dimen/list_item_image_big_width"
 		android:layout_height="@dimen/list_item_image_big_height"
 		android:layout_margin="@dimen/list_item_image_margin"
-		android:src="@drawable/planet_background"
 		android:layout_alignParentLeft="true"
-		android:adjustViewBounds="true"
 		android:scaleType="centerInside"
 		/>
 
@@ -20,8 +18,8 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@+id/main_list_item_big_image"
-		android:layout_marginTop="@dimen/main_list_item_title_margin_top"
-		android:layout_marginLeft="@dimen/main_list_item_title_margin_left"
+		android:layout_marginTop="@dimen/main_list_item_big_title_margin_top"
+		android:layout_marginLeft="@dimen/main_list_item_big_title_margin_left"
 		android:textColor="@android:color/holo_blue_bright"
 		/>
 
@@ -30,8 +28,8 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_toRightOf="@+id/main_list_item_big_image"
-		android:layout_marginTop="@dimen/main_list_item_details_margin_top"
-		android:layout_marginLeft="@dimen/main_list_item_details_margin_left"
+		android:layout_marginTop="@dimen/main_list_item_big_details_margin_top"
+		android:layout_marginLeft="@dimen/main_list_item_big_details_margin_left"
 		android:textColor="@android:color/holo_blue_bright"
 		/>
 

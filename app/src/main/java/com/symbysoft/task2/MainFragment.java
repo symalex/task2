@@ -21,7 +21,7 @@ import com.bumptech.glide.Glide;
 
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener
 {
-	private static final String TAG = MainActivity.class.getSimpleName();
+	private final String TAG = MainActivity.class.getSimpleName();
 
 	public static final String FTAG = "fragment_list";
     protected ListView mListView;
@@ -53,7 +53,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 	public void onViewCreated(View view, Bundle savedInstanceState)
 	{
 		super.onViewCreated(view, savedInstanceState);
-		MainListViewAdapter listViewAdapter = new MainListViewAdapter(getActivity(), ResourceDataProvider.List());
+		MainListViewAdapter listViewAdapter = new MainListViewAdapter(getActivity(), ResourceDataProvider.list());
 		mListView.setAdapter(listViewAdapter);
 	}
 

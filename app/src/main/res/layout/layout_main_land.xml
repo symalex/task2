@@ -18,17 +18,4 @@
 		android:layout_width="0dp"
 		android:layout_height="match_parent" />
 
-	<!--
-	<fragment android:name="com.symbysoft.task2.MainFragment"
-		android:id="@+id/fr_layout_main"
-		android:layout_weight="1"
-		android:layout_width="0dp"
-		android:layout_height="match_parent" />
-
-	<fragment android:name="com.symbysoft.task2.DetailsFragment"
-		android:id="@+id/fr_layout_details"
-		android:layout_weight="10"
-		android:layout_width="0dp"
-		android:layout_height="match_parent" /> -->
-
 </LinearLayout>

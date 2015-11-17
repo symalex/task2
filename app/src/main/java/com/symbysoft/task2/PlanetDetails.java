@@ -7,7 +7,7 @@ public class PlanetDetails implements Parcelable
 {
 	private static final long serialVersionUID = 300000000000000001L;
 
-	private final int max_shot_length = 12;
+	private final int max_shot_length = 50;
 
 	private String mTitle;
 	private String mImgSmallUrl;
@@ -15,17 +15,12 @@ public class PlanetDetails implements Parcelable
 	private String mDescriptionLong;
 	private ImageAndTextList mInfo;
 
-	protected String shortStr(String value, int max)
-	{
-		return value.substring(0, value.length() > max ? max : value.length());
-	}
-
 	public PlanetDetails(String img_small_url, String title, String description) {
 		super();
-		this.mImgSmallUrl = img_small_url;
-		this.mTitle = title;
-		this.mDescriptionShort = description;
-		this.mDescriptionLong = description;
+		mImgSmallUrl = img_small_url;
+		mTitle = title;
+		mDescriptionShort = description;
+		mDescriptionLong = description;
 		mInfo = new ImageAndTextList();
 	}
 
@@ -51,6 +46,9 @@ public class PlanetDetails implements Parcelable
 	public String getDescriptionShort() {
 		return shortStr(mDescriptionShort, max_shot_length);
 	}
+	public String getDescriptionShort(int max) {
+		return shortStr(mDescriptionShort, max);
+	}
 	public void setDescriptionShort(String value) {
 		this.mDescriptionShort = value;
 	}
@@ -70,6 +68,34 @@ public class PlanetDetails implements Parcelable
 	public PlanetDetails(Parcel in) {
 		this();
 		readFromParcel(in);
+	}
+
+	protected String shortStr(String value, int max)
+	{
+		String ret = value.substring(0, value.length() > max ? max : value.length()).trim();
+		int wl=0; boolean full_word=value.length()<=ret.length();
+		for(int i=ret.length()-1; i>=0; i--)
+		{
+			if( ret.charAt(i) == ' ' )
+			{
+				if( wl>=3 && full_word )
+				{
+					ret = value.substring(0,i+1+wl);
+					break;
+				}
+				else{
+					wl = 0;
+					full_word = true;
+				}
+			}
+			else {
+				wl += 1;
+			}
+		}
+		ret = ret.trim();
+		if ( value.length() > ret.length() )
+			ret += " ...";
+		return ret;
 	}
 
 	private void readFromParcel(Parcel in) {
