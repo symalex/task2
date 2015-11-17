@@ -19,12 +19,16 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 public class MainFragment extends Fragment implements AdapterView.OnItemClickListener
 {
 	private final String TAG = MainActivity.class.getSimpleName();
 
 	public static final String FTAG = "fragment_list";
-    protected ListView mListView;
+    @Bind(R.id.fr_layout_main_list) protected ListView mListView;
 
 	public static Fragment newInstance(Activity activity, int id)
 	{
@@ -44,7 +48,7 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View view = inflater.inflate(R.layout.fr_layout_main, container, false);
-		mListView = (ListView)view.findViewById(R.id.fr_layout_main_list);
+		ButterKnife.bind(this, view);
 		mListView.setOnItemClickListener(this);
 		return view;
 	}
@@ -57,7 +61,6 @@ public class MainFragment extends Fragment implements AdapterView.OnItemClickLis
 		mListView.setAdapter(listViewAdapter);
 	}
 
-	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 	{
 		Activity activity = getActivity();

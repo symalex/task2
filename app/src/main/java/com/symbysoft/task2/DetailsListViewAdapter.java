@@ -16,18 +16,20 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class DetailsListViewAdapter extends BaseAdapter
 {
 	private Context ctx;
 	private LayoutInflater inflater;
 	private PlanetsList mList;
 
-	private class Holder{
-		ImageView image;
-		TextView text;
-		Holder(View v){
-			image = (ImageView)v.findViewById(R.id.details_list_big_item_image);
-			text = (TextView)v.findViewById(R.id.details_list_big_item_text);
+	static class Holder{
+		@Bind(R.id.details_list_big_item_image) ImageView image;
+		@Bind(R.id.details_list_big_item_text) TextView text;
+		Holder(View v) {
+			ButterKnife.bind(this, v);
 		}
 	}
 

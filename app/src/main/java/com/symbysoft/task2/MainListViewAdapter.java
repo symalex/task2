@@ -33,22 +33,22 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainListViewAdapter extends BaseAdapter
 {
 	private Context mCtx;
 	private LayoutInflater mInflater;
 	private PlanetsList mList;
 
-	private class Holder{
-		RelativeLayout item;
-		ImageView image;
-		TextView title;
-		TextView summary;
-		Holder(View v){
-			item = (RelativeLayout)v.findViewById(R.id.main_list_item_id);
-			image = (ImageView)v.findViewById(R.id.main_list_item_image);
-			title = (TextView)v.findViewById(R.id.main_list_item_title);
-			summary = (TextView)v.findViewById(R.id.main_list_item_summary);
+	static class Holder{
+		@Bind(R.id.main_list_item_id) RelativeLayout item;
+		@Bind(R.id.main_list_item_image) ImageView image;
+		@Bind(R.id.main_list_item_title) TextView title;
+		@Bind(R.id.main_list_item_summary) TextView summary;
+		Holder(View v) {
+			ButterKnife.bind(this, v);
 		}
 	}
 

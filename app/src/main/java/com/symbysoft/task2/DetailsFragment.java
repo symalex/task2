@@ -34,17 +34,20 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class DetailsFragment extends Fragment implements AdapterView.OnItemClickListener
 {
 	private final String TAG = MainActivity.class.getSimpleName();
 	public static final String FTAG = "fragment_details";
 
 	LinearLayout mMainLayout;
-	RelativeLayout mBigItemLayout;
-	ImageView mImgTitle;
-	TextView mTitle;
-	TextView mSummary;
-	ListView mListView;
+	@Bind(R.id.main_list_big_item_id) RelativeLayout mBigItemLayout;
+	@Bind(R.id.main_list_item_big_image) ImageView mImgTitle;
+	@Bind(R.id.main_list_item_big_title) TextView mTitle;
+	@Bind(R.id.main_list_item_big_summary) TextView mSummary;
+	@Bind(R.id.fr_layout_details_list_id) ListView mListView;
 
 	Timer mTimer;
 	final Handler mHandler = new Handler();
@@ -184,11 +187,7 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
 		View view = inflater.inflate(R.layout.fr_layout_details, container, false);
 
 		mMainLayout = (LinearLayout)view;
-		mBigItemLayout = (RelativeLayout)view.findViewById(R.id.main_list_big_item_id);
-		mImgTitle = (ImageView)view.findViewById(R.id.main_list_item_big_image);
-		mTitle = (TextView)view.findViewById(R.id.main_list_item_big_title);
-		mSummary = (TextView)view.findViewById(R.id.main_list_item_big_summary);
-		mListView = (ListView)view.findViewById(R.id.fr_layout_details_list_id);
+		ButterKnife.bind(this, view);
 		mListView.setOnItemClickListener(this);
 
 		mItems = new ArrayList<ViewLink>();
