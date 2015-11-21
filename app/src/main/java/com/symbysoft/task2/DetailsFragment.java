@@ -133,7 +133,6 @@ public class DetailsFragment extends Fragment implements AbsListView.OnScrollLis
 
         mMainLayout = (LinearLayout) view;
         ButterKnife.bind(this, view);
-        mListView.setOnItemClickListener(this);
         mListView.setOnScrollListener(this);
 
         mItems = new ArrayList<ViewLink>();
