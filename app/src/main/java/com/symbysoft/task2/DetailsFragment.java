@@ -24,6 +24,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,7 +38,7 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DetailsFragment extends Fragment implements AdapterView.OnItemClickListener {
+public class DetailsFragment extends Fragment implements AbsListView.OnScrollListener {
     private final String TAG = MainActivity.class.getSimpleName();
     public static final String FTAG = "fragment_details";
 
@@ -53,14 +54,6 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
     @Bind(R.id.fr_layout_details_list_id)
     ListView mListView;
 
-    Timer mTimer;
-    final Handler mHandler = new Handler();
-    final Runnable mRunnableUpdateBigItemTimer = new Runnable() {
-        public void run() {
-            updateVisibility();
-        }
-    };
-
     private class ViewLink {
         TextView text;
         ImageView image;
@@ -73,15 +66,6 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
 
     ArrayList<ViewLink> mItems;
 
-    class UpdateBigItemTimerTask extends TimerTask {
-        public void run() {
-            Log.d(TAG, "UpdateBigItemTimerTask:run()");
-            if (mBigItemLayout != null) {
-                mHandler.post(mRunnableUpdateBigItemTimer);
-            }
-        }
-    }
-
     public static Fragment newInstance(Activity activity, int id) {
         DetailsFragment fragment = new DetailsFragment();
 
@@ -93,36 +77,19 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
         return fragment;
     }
 
-    private boolean listIsAtTop() {
-        if (mListView.getChildCount() == 0) {
-            return true;
-        }
-        return mListView.getChildAt(0).getTop() == 0;
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
     }
 
-    private void updateVisibility() {
-        if (mBigItemLayout != null) {
-            boolean hide = listIsAtTop();
-            Activity activity = getActivity();
-            if (activity != null) {
-                hide = hide || ((MyBaseActivity) activity).isSmallScreen();
-            }
-
-            mBigItemLayout.setVisibility(hide ? View.GONE : View.VISIBLE);
-            mBigItemLayout.invalidate();
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        boolean hide = firstVisibleItem == 0;
+        Activity activity = getActivity();
+        if (activity != null) {
+            hide = hide || ((MyBaseActivity) activity).isSmallScreen();
         }
-    }
-
-    protected void startBigItemTimer() {
-        if (mTimer != null) {
-            mTimer.cancel();
-            mTimer.purge();
-        }
-        mTimer = new Timer();
-        TimerTask updateBigItem = new UpdateBigItemTimerTask();
-        mTimer.schedule(updateBigItem, 5000);
-        Log.d(TAG, "StartBigItemTimer()");
-        updateVisibility();
+        mBigItemLayout.setVisibility(hide ? View.GONE : View.VISIBLE);
+        mBigItemLayout.invalidate();
     }
 
     public void updateDetailsView() {
@@ -158,8 +125,6 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
         }
 
         ((DetailsListViewAdapter) mListView.getAdapter()).notifyDataSetChanged();
-
-        startBigItemTimer();
     }
 
     @Override
@@ -169,6 +134,7 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
         mMainLayout = (LinearLayout) view;
         ButterKnife.bind(this, view);
         mListView.setOnItemClickListener(this);
+        mListView.setOnScrollListener(this);
 
         mItems = new ArrayList<ViewLink>();
 
@@ -189,18 +155,7 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
             mItems.add(new ViewLink(text, image));
         }
 
-        mTimer = new Timer();
-
         return view;
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-
-        mTimer.cancel();
-        mTimer.purge();
-        mTimer = null;
     }
 
     @Override
@@ -213,17 +168,4 @@ public class DetailsFragment extends Fragment implements AdapterView.OnItemClick
         updateDetailsView();
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        mTimer.cancel();
-        mTimer.purge();
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        updateVisibility();
-        startBigItemTimer();
-    }
 }
