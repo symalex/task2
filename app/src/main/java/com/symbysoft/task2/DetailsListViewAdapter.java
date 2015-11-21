@@ -19,92 +19,75 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DetailsListViewAdapter extends BaseAdapter
-{
-	private Context ctx;
-	private LayoutInflater inflater;
-	private PlanetsList mList;
+public class DetailsListViewAdapter extends BaseAdapter {
+    private Context ctx;
+    private LayoutInflater inflater;
+    private PlanetsList mList;
 
-	static class Holder{
-		@Bind(R.id.details_list_big_item_image) ImageView image;
-		@Bind(R.id.details_list_big_item_text) TextView text;
-		Holder(View v) {
-			ButterKnife.bind(this, v);
-		}
-	}
+    static class Holder {
+        @Bind(R.id.details_list_big_item_image)
+        ImageView image;
+        @Bind(R.id.details_list_big_item_text)
+        TextView text;
 
-	public DetailsListViewAdapter(Context ctx, PlanetsList list) {
-		this.ctx = ctx;
-		this.inflater = LayoutInflater.from(ctx);
-		setList(list);
-	}
+        Holder(View v) {
+            ButterKnife.bind(this, v);
+        }
+    }
 
-	public void setList(PlanetsList list)
-	{
-		mList = list;
-	}
-	public PlanetsList getList()
-	{
-		return mList;
-	}
+    public DetailsListViewAdapter(Context ctx, PlanetsList list) {
+        this.ctx = ctx;
+        this.inflater = LayoutInflater.from(ctx);
+        setList(list);
+    }
 
-	@Override
-	public int getCount()
-	{
-		return mList.getSelectedItem().getInfo().size();
-	}
+    public void setList(PlanetsList list) {
+        mList = list;
+    }
 
-	@Override
-	public ImageAndText getItem(int position)
-	{
-		return mList.getSelectedItem().getInfo().get(position);
-	}
+    public PlanetsList getList() {
+        return mList;
+    }
 
-	@Override
-	public long getItemId(int position)
-	{
-		return position;
-	}
+    @Override
+    public int getCount() {
+        return mList.getSelectedItem().getInfo().size();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
-		Holder h;
+    @Override
+    public ImageAndText getItem(int position) {
+        return mList.getSelectedItem().getInfo().get(position);
+    }
 
-		final ImageView image;
-		ImageAndText item = getItem(position);
-		if( convertView == null )
-		{
-			convertView = inflater.inflate(R.layout.details_list_big_item, parent, false);
-			h = new Holder(convertView);
-			image = h.image;
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-			convertView.setTag(h);
-		} else
-		{
-			h = (Holder) convertView.getTag();
-			image = h.image;
-		}
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Holder h;
 
-		h.text.setText(item.getText());
+        final ImageView image;
+        ImageAndText item = getItem(position);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.details_list_big_item, parent, false);
+            h = new Holder(convertView);
+            image = h.image;
 
-		String url = item.getImgUrl();
-		Glide.with(ctx)
-				.load(url)
-				.asBitmap()
-						//.centerCrop()
-				.into(new BitmapImageViewTarget(image)
-				      {
-					      @Override
-					      protected void setResource(Bitmap resource)
-					      {
-						      RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(ctx.getResources(), resource);
-						      drawable.setColorFilter(new PorterDuffColorFilter(ctx.getResources().getColor(R.color.details_list_backgroud_color), PorterDuff.Mode.LIGHTEN));
-						      image.setImageDrawable(drawable);
-					      }
-				      }
-				);
+            convertView.setTag(h);
+        } else {
+            h = (Holder) convertView.getTag();
+            image = h.image;
+        }
 
-		return convertView;
-	}
+        h.text.setText(item.getText());
+
+        String url = item.getImgUrl();
+        Glide.with(ctx)
+                .load(url).placeholder(R.drawable.planet_background)
+                .into(image);
+
+        return convertView;
+    }
 }

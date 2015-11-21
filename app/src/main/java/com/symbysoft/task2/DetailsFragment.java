@@ -37,218 +37,193 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class DetailsFragment extends Fragment implements AdapterView.OnItemClickListener
-{
-	private final String TAG = MainActivity.class.getSimpleName();
-	public static final String FTAG = "fragment_details";
+public class DetailsFragment extends Fragment implements AdapterView.OnItemClickListener {
+    private final String TAG = MainActivity.class.getSimpleName();
+    public static final String FTAG = "fragment_details";
 
-	LinearLayout mMainLayout;
-	@Bind(R.id.main_list_big_item_id) RelativeLayout mBigItemLayout;
-	@Bind(R.id.main_list_item_big_image) ImageView mImgTitle;
-	@Bind(R.id.main_list_item_big_title) TextView mTitle;
-	@Bind(R.id.main_list_item_big_summary) TextView mSummary;
-	@Bind(R.id.fr_layout_details_list_id) ListView mListView;
+    LinearLayout mMainLayout;
+    @Bind(R.id.main_list_big_item_id)
+    RelativeLayout mBigItemLayout;
+    @Bind(R.id.main_list_item_big_image)
+    ImageView mImgTitle;
+    @Bind(R.id.main_list_item_big_title)
+    TextView mTitle;
+    @Bind(R.id.main_list_item_big_summary)
+    TextView mSummary;
+    @Bind(R.id.fr_layout_details_list_id)
+    ListView mListView;
 
-	Timer mTimer;
-	final Handler mHandler = new Handler();
-	final Runnable mRunnableUpdateBigItemTimer = new Runnable() {
-		public void run() {
-			updateVisibility();
-		}
-	};
+    Timer mTimer;
+    final Handler mHandler = new Handler();
+    final Runnable mRunnableUpdateBigItemTimer = new Runnable() {
+        public void run() {
+            updateVisibility();
+        }
+    };
 
-	private class ViewLink
-	{
-		TextView text;
-		ImageView image;
-		ViewLink(TextView txt, ImageView img)
-		{
-			this.text = txt;
-			this.image = img;
-		}
-	}
-	ArrayList<ViewLink> mItems;
+    private class ViewLink {
+        TextView text;
+        ImageView image;
 
-	class UpdateBigItemTimerTask extends TimerTask
-	{
-		public void run() {
-			Log.d(TAG, "UpdateBigItemTimerTask:run()");
-			if( mBigItemLayout != null )
-			{
-				mHandler.post(mRunnableUpdateBigItemTimer);
-			}
-		}
-	}
+        ViewLink(TextView txt, ImageView img) {
+            this.text = txt;
+            this.image = img;
+        }
+    }
 
-	public static Fragment newInstance(Activity activity, int id)
-	{
-		DetailsFragment fragment = new DetailsFragment();
+    ArrayList<ViewLink> mItems;
 
-		FragmentManager fm = activity.getFragmentManager();
-		FragmentTransaction ft = fm.beginTransaction();
-		ft.add(id, fragment, FTAG);
-		ft.commit();
+    class UpdateBigItemTimerTask extends TimerTask {
+        public void run() {
+            Log.d(TAG, "UpdateBigItemTimerTask:run()");
+            if (mBigItemLayout != null) {
+                mHandler.post(mRunnableUpdateBigItemTimer);
+            }
+        }
+    }
 
-		return fragment;
-	}
+    public static Fragment newInstance(Activity activity, int id) {
+        DetailsFragment fragment = new DetailsFragment();
 
-	private boolean listIsAtTop()   {
-		if( mListView.getChildCount() == 0 ) return true;
-		return mListView.getChildAt(0).getTop() == 0;
-	}
+        FragmentManager fm = activity.getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(id, fragment, FTAG);
+        ft.commit();
 
-	private void updateVisibility()
-	{
-		if( mBigItemLayout != null )
-		{
-			boolean hide = listIsAtTop();
-			Activity activity = getActivity();
-			if( activity != null )
-			{
-				if( activity instanceof MainActivity )
-					hide = hide || MyBaseActivity.isSmallScreen();
-				else if( activity instanceof DetailsActivity )
-					hide = hide || MyBaseActivity.isSmallScreen();
-			}
+        return fragment;
+    }
 
-			mBigItemLayout.setVisibility(hide?View.GONE:View.VISIBLE);
-			mBigItemLayout.invalidate();
-		}
-	}
+    private boolean listIsAtTop() {
+        if (mListView.getChildCount() == 0) {
+            return true;
+        }
+        return mListView.getChildAt(0).getTop() == 0;
+    }
 
-	protected void startBigItemTimer()
-	{
-		if( mTimer != null )
-		{
-			mTimer.cancel();
-			mTimer.purge();
-		}
-		mTimer = new Timer();
-		TimerTask updateBigItem = new UpdateBigItemTimerTask();
-		mTimer.schedule(updateBigItem, 5000);
-		Log.d(TAG, "StartBigItemTimer()");
-		updateVisibility();
-	}
+    private void updateVisibility() {
+        if (mBigItemLayout != null) {
+            boolean hide = listIsAtTop();
+            Activity activity = getActivity();
+            if (activity != null) {
+                hide = hide || ((MyBaseActivity) activity).isSmallScreen();
+            }
 
-	public void updateDetailsView()
-	{
-		PlanetDetails details = ResourceDataProvider.list().getSelectedItem();
+            mBigItemLayout.setVisibility(hide ? View.GONE : View.VISIBLE);
+            mBigItemLayout.invalidate();
+        }
+    }
 
-		mTitle.setText(details.getTitle());
-		mTitle.setTypeface(Typeface.DEFAULT_BOLD);
-		mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-				getResources().getDimension(R.dimen.list_item_title_text_size)
-		);
+    protected void startBigItemTimer() {
+        if (mTimer != null) {
+            mTimer.cancel();
+            mTimer.purge();
+        }
+        mTimer = new Timer();
+        TimerTask updateBigItem = new UpdateBigItemTimerTask();
+        mTimer.schedule(updateBigItem, 5000);
+        Log.d(TAG, "StartBigItemTimer()");
+        updateVisibility();
+    }
 
-		mSummary.setText(details.getDescriptionLong());
-		mSummary.setTypeface(null, Typeface.BOLD_ITALIC);
-		mSummary.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-				getResources().getDimension(R.dimen.list_item_details_text_size)
-		);
+    public void updateDetailsView() {
+        PlanetDetails details = ResourceDataProvider.list().getSelectedItem();
 
-		Glide.with(this)
-				.load(details.getImgSmallUrl())
-				.asBitmap()
-				//.centerCrop()
-				.into(new BitmapImageViewTarget(mImgTitle)
-				{
-					@Override
-					protected void setResource(Bitmap resource)
-					{
-						RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(getResources(), resource);
-						drawable.setColorFilter(new PorterDuffColorFilter(getResources().getColor(R.color.details_list_backgroud_color), PorterDuff.Mode.LIGHTEN));
-						mImgTitle.setImageDrawable(drawable);
-					}
-				});
+        mTitle.setText(details.getTitle());
+        mTitle.setTypeface(Typeface.DEFAULT_BOLD);
+        mTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                getResources().getDimension(R.dimen.list_item_title_text_size)
+        );
 
-		for(int i=0; i<details.getInfo().size(); i++)
-		{
-			ImageAndText item = details.getInfo().get(i);
-			ViewLink v = mItems.get(i);
-			v.text.setText(item.getText());
-			v.text.setTypeface(null, Typeface.ITALIC);
-			v.text.setTextColor(getResources().getColor(R.color.deafult_text_color));
-			if( v.image != null )
-			{
-				Glide.with(this)
-						.load(item.getImgUrl())
-						.into(v.image);
-			}
-		}
+        mSummary.setText(details.getDescriptionLong());
+        mSummary.setTypeface(null, Typeface.BOLD_ITALIC);
+        mSummary.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                getResources().getDimension(R.dimen.list_item_details_text_size)
+        );
 
-		((DetailsListViewAdapter)mListView.getAdapter()).notifyDataSetChanged();
+        Glide.with(this)
+                .load(details.getImgSmallUrl()).placeholder(R.drawable.planet_background)
+                .into(mImgTitle);
 
-		startBigItemTimer();
-	}
+        for (int i = 0; i < details.getInfo().size(); i++) {
+            ImageAndText item = details.getInfo().get(i);
+            ViewLink v = mItems.get(i);
+            v.text.setText(item.getText());
+            v.text.setTypeface(null, Typeface.ITALIC);
+            v.text.setTextColor(getResources().getColor(R.color.deafult_text_color));
+            if (v.image != null) {
+                Glide.with(this)
+                        .load(item.getImgUrl())
+                        .into(v.image);
+            }
+        }
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-	{
-		View view = inflater.inflate(R.layout.fr_layout_details, container, false);
+        ((DetailsListViewAdapter) mListView.getAdapter()).notifyDataSetChanged();
 
-		mMainLayout = (LinearLayout)view;
-		ButterKnife.bind(this, view);
-		mListView.setOnItemClickListener(this);
+        startBigItemTimer();
+    }
 
-		mItems = new ArrayList<ViewLink>();
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fr_layout_details, container, false);
 
-		// dynamicaly create elements
-		PlanetDetails details = ResourceDataProvider.list().getSelectedItem();
-		for(int i=0; i<details.getInfo().size(); i++)
-		{
-			ImageAndText item = details.getInfo().get(i);
-			Log.d(TAG, this + ": item (img,text) ( " + item.getImgUrl() + ", " + item.getText() + ") ");
+        mMainLayout = (LinearLayout) view;
+        ButterKnife.bind(this, view);
+        mListView.setOnItemClickListener(this);
 
-			TextView text = new TextView(getActivity());
-			text.setGravity(Gravity.CENTER_HORIZONTAL);
-			text.setPadding(4,4,4,4);
-			mMainLayout.addView(text);
+        mItems = new ArrayList<ViewLink>();
 
-			ImageView image = new ImageView(getActivity());
-			mMainLayout.addView(image);
+        // dynamicaly create elements
+        PlanetDetails details = ResourceDataProvider.list().getSelectedItem();
+        for (int i = 0; i < details.getInfo().size(); i++) {
+            ImageAndText item = details.getInfo().get(i);
+            Log.d(TAG, this + ": item (img,text) ( " + item.getImgUrl() + ", " + item.getText() + ") ");
 
-			mItems.add(new ViewLink(text,image));
-		}
+            TextView text = new TextView(getActivity());
+            text.setGravity(Gravity.CENTER_HORIZONTAL);
+            text.setPadding(4, 4, 4, 4);
+            mMainLayout.addView(text);
 
-		mTimer = new Timer();
+            ImageView image = new ImageView(getActivity());
+            mMainLayout.addView(image);
 
-		return view;
-	}
+            mItems.add(new ViewLink(text, image));
+        }
 
-	@Override
-	public void onDestroyView()
-	{
-		super.onDestroyView();
+        mTimer = new Timer();
 
-		mTimer.cancel();
-		mTimer.purge();
-		mTimer = null;
-	}
+        return view;
+    }
 
-	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState)
-	{
-		super.onViewCreated(view, savedInstanceState);
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
 
-		DetailsListViewAdapter listViewAdapter = new DetailsListViewAdapter(getActivity(), ResourceDataProvider.list());
-		mListView.setAdapter(listViewAdapter);
+        mTimer.cancel();
+        mTimer.purge();
+        mTimer = null;
+    }
 
-		updateDetailsView();
-	}
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-	@Override
-	public void onStop()
-	{
-		super.onStop();
+        DetailsListViewAdapter listViewAdapter = new DetailsListViewAdapter(getActivity(), ResourceDataProvider.list());
+        mListView.setAdapter(listViewAdapter);
 
-		mTimer.cancel();
-		mTimer.purge();
-	}
+        updateDetailsView();
+    }
 
-	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-	{
-		updateVisibility();
-		startBigItemTimer();
-	}
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        mTimer.cancel();
+        mTimer.purge();
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        updateVisibility();
+        startBigItemTimer();
+    }
 }

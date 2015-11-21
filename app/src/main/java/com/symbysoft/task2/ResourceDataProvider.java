@@ -18,27 +18,27 @@ public class ResourceDataProvider {
         PLANET_ITEM_DESCRIPTION_INDEX
     }
 
-    private enum ResPlanetItemDetailsEnum
-    {
+    private enum ResPlanetItemDetailsEnum {
         PLANET_ITEM_DETAILS_IMG_URL_INDEX,
         PLANET_ITEM_DETAILS_TEXT_INDEX
     }
 
     private static PlanetsList mList;
-    public static PlanetsList list(){return mList; }
 
-    ResourceDataProvider(Context ctx)
-    {
+    public static PlanetsList list() {
+        return mList;
+    }
+
+    ResourceDataProvider(Context ctx) {
         super();
 
-        mList= new PlanetsList();
+        mList = new PlanetsList();
         loadApplicationData(ctx);
     }
 
-    private void loadApplicationData(Context ctx)
-    {
+    private void loadApplicationData(Context ctx) {
         int i = 0;
-        for(TypedArray item: ResourceHelper.getMultiTypedArray(ctx, "panet_item_%d") ) {
+        for (TypedArray item : ResourceHelper.getMultiTypedArray(ctx, "panet_item_%d")) {
 
             PlanetDetails details = new PlanetDetails(
                     item.getString(ResPlanetItemEnum.PLANET_ITEM_SMALL_IMG_URL_INDEX.ordinal()),
@@ -51,11 +51,10 @@ public class ResourceDataProvider {
                     item.getString(ResPlanetItemEnum.PLANET_ITEM_DESCRIPTION_INDEX.ordinal())
             ));
 
-            for(TypedArray info: ResourceHelper.getMultiTypedArray(ctx, String.format("panet_item_%d",i)+"_details_%d") )
-            {
+            for (TypedArray info : ResourceHelper.getMultiTypedArray(ctx, String.format("panet_item_%d", i) + "_details_%d")) {
                 details.getInfo().add(new ImageAndText(
-                                info.getString(ResPlanetItemDetailsEnum.PLANET_ITEM_DETAILS_IMG_URL_INDEX.ordinal()),
-                                info.getString(ResPlanetItemDetailsEnum.PLANET_ITEM_DETAILS_TEXT_INDEX.ordinal())
+                        info.getString(ResPlanetItemDetailsEnum.PLANET_ITEM_DETAILS_IMG_URL_INDEX.ordinal()),
+                        info.getString(ResPlanetItemDetailsEnum.PLANET_ITEM_DETAILS_TEXT_INDEX.ordinal())
                 ));
                 info.recycle();
             }

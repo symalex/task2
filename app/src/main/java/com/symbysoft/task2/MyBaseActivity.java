@@ -4,21 +4,34 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
-public class MyBaseActivity extends FragmentActivity
-{
-    private static Boolean mIsWideScreen;
-    private static Boolean mIsTabletScreen;
-    private static Boolean mTwoFragment;
-    public static Boolean isWideScreen(){return mIsWideScreen; }
-    public static Boolean isSmallScreen(){return !isWideScreen(); }
-    public static Boolean isTabletScreen(){return mIsTabletScreen; }
+public class MyBaseActivity extends FragmentActivity {
+    private Boolean mIsWideScreen;
+    private Boolean mIsTabletScreen;
+    private Boolean mTwoFragment;
 
-    public static Boolean isTwoFragment(){return mTwoFragment; }
-    protected static void setTwoFragment(Boolean value){mTwoFragment = value; }
+    public Boolean isWideScreen() {
+        return mIsWideScreen;
+    }
 
-    public static void updateScreenInfo() {
-        mIsWideScreen =  MyApp.myApp().getResources().getBoolean(R.bool.is_wide_screen);
-        mIsTabletScreen = MyApp.myApp().getResources().getBoolean(R.bool.is_tablet_screen);
+    public Boolean isSmallScreen() {
+        return !isWideScreen();
+    }
+
+    public Boolean isTabletScreen() {
+        return mIsTabletScreen;
+    }
+
+    public Boolean isTwoFragment() {
+        return mTwoFragment;
+    }
+
+    protected void setTwoFragment(Boolean value) {
+        mTwoFragment = value;
+    }
+
+    public void updateScreenInfo() {
+        mIsWideScreen = getResources().getBoolean(R.bool.is_wide_screen);
+        mIsTabletScreen = getResources().getBoolean(R.bool.is_tablet_screen);
     }
 
     @Override

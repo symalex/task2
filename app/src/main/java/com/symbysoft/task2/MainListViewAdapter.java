@@ -36,120 +36,87 @@ import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainListViewAdapter extends BaseAdapter
-{
-	private Context mCtx;
-	private LayoutInflater mInflater;
-	private PlanetsList mList;
+public class MainListViewAdapter extends BaseAdapter {
+    private Context mCtx;
+    private LayoutInflater mInflater;
+    private PlanetsList mList;
 
-	static class Holder{
-		@Bind(R.id.main_list_item_id) RelativeLayout item;
-		@Bind(R.id.main_list_item_image) ImageView image;
-		@Bind(R.id.main_list_item_title) TextView title;
-		@Bind(R.id.main_list_item_summary) TextView summary;
-		Holder(View v) {
-			ButterKnife.bind(this, v);
-		}
-	}
+    static class Holder {
+        @Bind(R.id.main_list_item_id)
+        RelativeLayout item;
+        @Bind(R.id.main_list_item_image)
+        ImageView image;
+        @Bind(R.id.main_list_item_title)
+        TextView title;
+        @Bind(R.id.main_list_item_summary)
+        TextView summary;
 
-	public MainListViewAdapter(Context ctx, PlanetsList list) {
-		mCtx = ctx;
-		mInflater = LayoutInflater.from(ctx);
-		setList(list);
-	}
+        Holder(View v) {
+            ButterKnife.bind(this, v);
+        }
+    }
 
-	public void setList(PlanetsList list)
-	{
-		mList = list;
-	}
-	public PlanetsList getList()
-	{
-		return mList;
-	}
+    public MainListViewAdapter(Context ctx, PlanetsList list) {
+        mCtx = ctx;
+        mInflater = LayoutInflater.from(ctx);
+        setList(list);
+    }
 
-	@Override
-	public int getCount()
-	{
-		return mList.size();
-	}
+    public void setList(PlanetsList list) {
+        mList = list;
+    }
 
-	@Override
-	public PlanetDetails getItem(int position)
-	{
-		return mList.get(position);
-	}
+    public PlanetsList getList() {
+        return mList;
+    }
 
-	@Override
-	public long getItemId(int position)
-	{
-		return position;
-	}
+    @Override
+    public int getCount() {
+        return mList.size();
+    }
 
-	@Override
-	public View getView(int position, View convertView, ViewGroup parent)
-	{
-		Holder h;
+    @Override
+    public PlanetDetails getItem(int position) {
+        return mList.get(position);
+    }
 
-		final ImageView image;
-		PlanetDetails item = getItem(position);
-		if( convertView == null ){
-			convertView = mInflater.inflate(R.layout.main_list_item, parent, false);
-			h = new Holder(convertView);
-			image = h.image;
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
 
-			/////////////////////////////////////// create backgound bitmap ///////////////////////////////////////
-			BitmapDrawable bg = new BitmapDrawable(BitmapFactory.decodeResource(mCtx.getResources(), R.drawable.planet_background));
-			float dp = mCtx.getResources().getDimension(R.dimen.list_item_height);
-			int wp = mCtx.getResources().getDisplayMetrics().widthPixels;
-			int hp = mCtx.getResources().getDisplayMetrics().heightPixels;
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Holder h;
 
-			int w = wp<hp?Math.round(dp *wp/hp):Math.round(dp *hp/wp);
-			Bitmap scaledBmp = Bitmap.createScaledBitmap(bg.getBitmap(), w, w, false);
-			BitmapDrawable scaledBmpdrawable = new BitmapDrawable(mCtx.getResources(), scaledBmp);
-			scaledBmpdrawable.setGravity(Gravity.CENTER);
+        final ImageView image;
+        PlanetDetails item = getItem(position);
+        if (convertView == null) {
+            convertView = mInflater.inflate(R.layout.main_list_item, parent, false);
+            h = new Holder(convertView);
+            image = h.image;
+            convertView.setTag(h);
+        } else {
+            h = (Holder) convertView.getTag();
+            image = h.image;
+        }
 
-			if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-				image.setBackgroundDrawable(scaledBmpdrawable);
-			} else {
-				image.setBackground(scaledBmpdrawable);
-			}
-			///////////////////////////////////////////////////////////////////////////////////////////////////////
+        h.title.setText(item.getTitle());
+        h.title.setTypeface(Typeface.DEFAULT_BOLD);
+        h.title.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                mCtx.getResources().getDimension(R.dimen.list_item_title_text_size)
+        );
 
-			convertView.setTag(h);
-		} else
-		{
-			h = (Holder) convertView.getTag();
-			image = h.image;
-		}
+        h.summary.setText(item.getDescriptionShort(mCtx.getResources().getInteger(R.integer.main_list_item_details_max_chars)));
+        h.summary.setTypeface(null, Typeface.BOLD_ITALIC);
+        h.summary.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                mCtx.getResources().getDimension(R.dimen.list_item_details_text_size)
+        );
 
-		h.title.setText(item.getTitle());
-		h.title.setTypeface(Typeface.DEFAULT_BOLD);
-		h.title.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-				mCtx.getResources().getDimension(R.dimen.list_item_title_text_size)
-		);
+        Glide.with(mCtx)
+                .load(item.getImgSmallUrl()).placeholder(R.drawable.planet_background)
+                .into(image);
 
-		h.summary.setText(item.getDescriptionShort(mCtx.getResources().getInteger(R.integer.main_list_item_details_max_chars)));
-		h.summary.setTypeface(null, Typeface.BOLD_ITALIC);
-		h.summary.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-				mCtx.getResources().getDimension(R.dimen.list_item_details_text_size)
-		);
-
-		Glide.with(mCtx)
-				.load(item.getImgSmallUrl())
-				.asBitmap()
-				//.centerCrop()
-				.into(new BitmapImageViewTarget(image)
-				      {
-					      @Override
-					      protected void setResource(Bitmap resource)
-					      {
-						      RoundedBitmapDrawable drawable = RoundedBitmapDrawableFactory.create(mCtx.getResources(), resource);
-						      drawable.setColorFilter(new PorterDuffColorFilter(mCtx.getResources().getColor(R.color.main_list_backgroud_color), PorterDuff.Mode.LIGHTEN));
-						      image.setImageDrawable(drawable);
-					      }
-				      }
-				);
-
-		return convertView;
-	}
+        return convertView;
+    }
 }
