@@ -31,92 +31,106 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainListViewAdapter extends BaseAdapter {
-    private Context mCtx;
-    private LayoutInflater mInflater;
-    private PlanetsList mList;
+public class MainListViewAdapter extends BaseAdapter
+{
+	private Context mCtx;
+	private LayoutInflater mInflater;
+	private PlanetsList mList;
 
-    static class Holder {
-        @Bind(R.id.main_list_item_id)
-        RelativeLayout item;
-        @Bind(R.id.main_list_item_image)
-        ImageView image;
-        @Bind(R.id.main_list_item_title)
-        TextView title;
-        @Bind(R.id.main_list_item_summary)
-        TextView summary;
+	static class Holder
+	{
+		@Bind(R.id.main_list_item_id)
+		RelativeLayout item;
+		@Bind(R.id.main_list_item_image)
+		ImageView image;
+		@Bind(R.id.main_list_item_title)
+		TextView title;
+		@Bind(R.id.main_list_item_summary)
+		TextView summary;
 
-        Holder(View v) {
-            ButterKnife.bind(this, v);
-        }
-    }
+		Holder(View v)
+		{
+			ButterKnife.bind(this, v);
+		}
+	}
 
-    public MainListViewAdapter(Context ctx, PlanetsList list) {
-        mCtx = ctx;
-        mInflater = LayoutInflater.from(ctx);
-        setList(list);
-    }
+	public MainListViewAdapter(Context ctx, PlanetsList list)
+	{
+		mCtx = ctx;
+		mInflater = LayoutInflater.from(ctx);
+		setList(list);
+	}
 
-    public void setList(PlanetsList list) {
-        mList = list;
-    }
+	public void setList(PlanetsList list)
+	{
+		mList = list;
+	}
 
-    public PlanetsList getList() {
-        return mList;
-    }
+	public PlanetsList getList()
+	{
+		return mList;
+	}
 
-    @Override
-    public int getCount() {
-        return mList.size();
-    }
+	@Override
+	public int getCount()
+	{
+		return mList.size();
+	}
 
-    @Override
-    public PlanetDetails getItem(int position) {
-        return mList.get(position);
-    }
+	@Override
+	public PlanetDetails getItem(int position)
+	{
+		return mList.get(position);
+	}
 
-    @Override
-    public long getItemId(int position) {
-        return position;
-    }
+	@Override
+	public long getItemId(int position)
+	{
+		return position;
+	}
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Holder h;
+	@Override
+	public View getView(int position, View convertView, ViewGroup parent)
+	{
+		Holder h;
 
-        final ImageView image;
-        PlanetDetails item = getItem(position);
-        if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.main_list_item, parent, false);
-            h = new Holder(convertView);
-            image = h.image;
-            convertView.setTag(h);
-        } else {
-            h = (Holder) convertView.getTag();
-            image = h.image;
-        }
+		PlanetDetails item = getItem(position);
+		if (convertView == null)
+		{
+			convertView = mInflater.inflate(R.layout.main_list_item, parent, false);
+			h = new Holder(convertView);
 
-        h.title.setText(item.getTitle());
-        h.title.setTypeface(Typeface.DEFAULT_BOLD);
-        h.title.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                mCtx.getResources().getDimension(R.dimen.list_item_title_text_size)
-        );
+			convertView.setTag(h);
+		}
+		h = (Holder) convertView.getTag();
 
-        h.summary.setText(item.getDescriptionShort(mCtx.getResources().getInteger(R.integer.main_list_item_details_max_chars)));
-        h.summary.setTypeface(null, Typeface.BOLD_ITALIC);
-        h.summary.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                mCtx.getResources().getDimension(R.dimen.list_item_details_text_size)
-        );
+		h.title.setText(item.getTitle());
+		h.title.setTypeface(Typeface.DEFAULT_BOLD);
+		h.title.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+				mCtx.getResources().getDimension(R.dimen.list_item_title_text_size)
+		);
 
-        Glide.with(mCtx)
-                .load(item.getImgSmallUrl()).placeholder(R.drawable.planet_background)
-                .into(image);
+		h.summary.setText(item.getDescriptionShort(mCtx.getResources().getInteger(R.integer.main_list_item_details_max_chars)));
+		h.summary.setTypeface(null, Typeface.BOLD_ITALIC);
+		h.summary.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+				mCtx.getResources().getDimension(R.dimen.list_item_details_text_size)
+		);
 
-        return convertView;
-    }
+		Glide.with(mCtx)
+				.load(item.getImgSmallUrl())
+				.asBitmap()
+				.placeholder(R.drawable.planet_background)
+				.transform(new BackgroundChangeTranformation(mCtx, mCtx.getResources().getColor(R.color.main_list_backgroud_color)))
+				.into(h.image);
+
+		return convertView;
+	}
 }

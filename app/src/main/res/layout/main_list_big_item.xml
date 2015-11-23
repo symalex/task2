@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent"
-	android:layout_height="@dimen/list_item_big_height"
+<RelativeLayout
 	android:id="@+id/main_list_big_item_id"
-	>
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="@dimen/list_item_big_height"
+	android:orientation="vertical">
 
 	<ImageView
 		android:id="@+id/main_list_item_big_image"
 		android:layout_width="@dimen/list_item_image_big_width"
-		android:layout_height="@dimen/list_item_image_big_height"
-		android:layout_margin="@dimen/list_item_image_margin"
+		android:layout_height="match_parent"
 		android:layout_alignParentLeft="true"
-		android:scaleType="centerInside"
-		/>
+		android:layout_margin="@dimen/list_item_image_margin"
+		android:adjustViewBounds="true"
+		android:scaleType="centerCrop" />
 
 	<TextView
 		android:id="@+id/main_list_item_big_title"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/main_list_item_big_image"
-		android:layout_marginTop="@dimen/main_list_item_big_title_margin_top"
 		android:layout_marginLeft="@dimen/main_list_item_big_title_margin_left"
-		android:textColor="@android:color/holo_blue_bright"
-		/>
+		android:layout_marginTop="@dimen/main_list_item_big_title_margin_top"
+		android:layout_toRightOf="@+id/main_list_item_big_image"
+		android:textColor="@android:color/holo_blue_bright" />
 
 	<TextView
 		android:id="@+id/main_list_item_big_summary"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:layout_toRightOf="@+id/main_list_item_big_image"
-		android:layout_marginTop="@dimen/main_list_item_big_details_margin_top"
 		android:layout_marginLeft="@dimen/main_list_item_big_details_margin_left"
-		android:textColor="@android:color/holo_blue_bright"
-		/>
+		android:layout_marginTop="@dimen/main_list_item_big_details_margin_top"
+		android:layout_toRightOf="@+id/main_list_item_big_image"
+		android:textColor="@android:color/holo_blue_bright" />
 
 </RelativeLayout>
